@@ -25,6 +25,7 @@
         overflow: hidden;
         border-left: 1px solid #999;
         border-right: 1px solid #999;
+        margin: 0 auto; /* PDF-এ সেন্টার করার জন্য */
     }
     .header-bar {
         background: #0d356d;
@@ -185,7 +186,7 @@
 document.getElementById("downloadBtn").addEventListener("click", () => {
     const element = document.getElementById("idCard");
     const opt = {
-        margin:       0.5, // A4 পেজে মার্জিন
+        margin:       [ (11.69 - 3.37)/2, (8.27 - 2.1)/2 ], // A4-portrait: 11.69in height, 8.27in width
         filename:     'ID_Card.pdf',
         image:        { type: 'jpeg', quality: 1 },
         html2canvas:  { scale: 2, useCORS: true },
