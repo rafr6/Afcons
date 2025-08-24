@@ -25,6 +25,7 @@
         overflow: hidden;
         border-left: 1px solid #999;
         border-right: 1px solid #999;
+        margin: 0 auto;
     }
     .header-bar {
         background: #0d356d;
@@ -88,6 +89,7 @@
     .emp-info p.job-title span {
         color: orange;
     }
+    /* ঠিক Address লেভেল */
     .emp-info p.address span {
         display: block;
     }
@@ -101,7 +103,7 @@
         text-align: center;
         width: 45%;
         padding-top: 2px;
-        border-top: 1px solid #333;
+        border-top: 1px solid #333; /* চিকন বর্ডার আরও হালকা */
         position: relative;
     }
     .signatures img.signature-pic {
@@ -109,7 +111,7 @@
         height: 18px;
         margin: 0 auto 2px;
         position: absolute;
-        top: -20px;
+        top: -20px; /* বর্ডারের উপরে ছবি */
         left: 50%;
         transform: translateX(-50%);
     }
@@ -184,39 +186,24 @@
 <script>
 document.getElementById("downloadBtn").addEventListener("click", () => {
     const element = document.getElementById("idCard");
-    const pdf = html2pdf()
-        .set({
-            margin: [0, 0, 0, 0],
-            filename: 'ID_Card.pdf',
-            image: { type: 'jpeg', quality: 1 },
-            html2canvas: { scale: 2 },
-            jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-        })
-        .from(element)
-        .toPdf()
-        .get('pdf')
-        .then(function (pdf) {
-            // A4 page width & height
-            const pageWidth = pdf.internal.pageSize.getWidth();
-            const pageHeight = pdf.internal.pageSize.getHeight();
-            const cardWidth = 2.1;
-            const cardHeight = 3.37;
-            const x = (pageWidth - cardWidth) / 2;
-            const y = (pageHeight - cardHeight) / 2;
-
-            // remove old page and add new centered page
-            pdf.deletePage(1);
-            pdf.addPage([pageWidth, pageHeight]);
-            pdf.setPage(1);
-
-            pdf.addImage(
-                html2canvas(element, { scale: 2 }).then(canvas => {
-                    const imgData = canvas.toDataURL('image/jpeg', 1.0);
-                    pdf.addImage(imgData, 'JPEG', x, y, cardWidth, cardHeight);
-                })
-            );
-
-        }).save();
+    const opt = {
+        margin:       [1, 0, 1, 0], // top, left, bottom, right (in inches)
+        filename:     'ID_Card.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        const cardWidth = 2.1;
+        const cardHeight = 3.37;
+        const x = (pageWidth - cardWidth) / 2;
+        const y = (pageHeight - cardHeight) / 2;
+        pdf.setPage(1);
+        pdf.addImage(pdf.internal.pages[1], 'JPEG', x, y, cardWidth, cardHeight);
+        document.getElementById("downloadBtn").style.display = "none"; // বাটন লুকানো
+    }).save();
 });
 </script>
 
