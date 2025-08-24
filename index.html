@@ -23,8 +23,8 @@
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        border-left: 3px solid purple;   /* বাম পাশে কালার বর্ডার */
-        border-right: 3px solid teal;    /* ডান পাশে কালার বর্ডার */
+        border-left: 1px solid #999;   /* বাম পাশে চিকন বর্ডার */
+        border-right: 1px solid #999;  /* ডান পাশে চিকন বর্ডার */
     }
 
     /* Top Header Bar */
@@ -53,7 +53,7 @@
         margin-bottom: 4px;
     }
     .top-logos img {
-        height: 30px; /* লোগো বড় করা হলো */
+        height: 30px; /* লোগো বড় */
         width: auto;
     }
     .profile-pic {
@@ -82,18 +82,23 @@
         line-height: 1.2;
         padding: 0 4px;
         flex-grow: 1;
-        font-weight: normal; /* চিকন */
     }
     .emp-info p {
         margin: 1px 0;
+        font-weight: normal; /* সব ইনফো চিকন */
     }
     .emp-info p strong {
-        font-weight: bold;
+        font-weight: normal; /* লেবেলও চিকন */
+        color: #000; /* স্বাভাবিক কালার */
     }
-    /* Job Title এর রঙ পরিবর্তন */
-    .emp-info p.job-title {
-        color: orange; 
+    /* Job Title আলাদা কালার */
+    .emp-info p.job-title strong {
+        font-weight: normal; /* লেবেল চিকন */
+        color: #000;
+    }
+    .emp-info p.job-title span {
         font-weight: bold;
+        color: orange; /* শুধু Excavator Operator কমলা */
     }
 
     .signatures {
@@ -102,14 +107,12 @@
         align-items: center;
         margin-top: 5px;
         font-size: 6px;
+        border-top: 1px solid #666; /* শুধু উপরে চিকন বর্ডার */
+        padding-top: 3px;
     }
     .signatures div {
         text-align: center;
         width: 45%;
-        border-top: 1px solid #666;
-        border-bottom: 1px solid #666;
-        padding-top: 2px;
-        margin-top: 3px;
     }
     .signatures img {
         height: 14px;
@@ -117,7 +120,7 @@
         margin: 0 auto 2px;
     }
 
-    /* Footer banner inside the card */
+    /* Footer banner */
     .footer {
         background: #0d356d;
         color: #fff;
@@ -153,7 +156,7 @@
 
             <!-- Employee Info -->
             <div class="emp-info">
-                <p class="job-title"><strong>Job Title:</strong> Excavator Operator</p>
+                <p class="job-title"><strong>Job Title:</strong> <span>Excavator Operator</span></p>
                 <p><strong>Blood Group:</strong> AB+</p>
                 <p><strong>Phone:</strong> +880 01747-902058</p>
                 <p><strong>Address:</strong> Jatrapur, Ashuganj, Ashuganj-3402,<br>Brahmanbaria, Chattogram</p>
