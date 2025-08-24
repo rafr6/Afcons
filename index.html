@@ -101,12 +101,12 @@
     .signatures div {
         text-align: center;
         width: 45%;
-        border-top: 1px solid #000;
+        border-top: 1px solid #000; /* চিকন বর্ডার */
         padding-top: 2px;
     }
-    .signatures img {
+    .signatures img.signature-pic {
         display: block;
-        height: 14px;
+        height: 18px;
         margin: 0 auto 2px;
     }
     .footer {
@@ -161,11 +161,11 @@
 
             <div class="signatures">
                 <div>
-                    <img src="signature-holder.png" alt="Signature Holder">
+                    <img class="signature-pic" src="signature-holder.png" alt="Signature Holder">
                     Signature of Holder
                 </div>
                 <div>
-                    <img src="signature-director.png" alt="Signature Director">
+                    <img class="signature-pic" src="signature-director.png" alt="Signature Director">
                     Managing Director
                 </div>
             </div>
@@ -181,7 +181,7 @@
 document.getElementById("downloadBtn").addEventListener("click", () => {
     const element = document.getElementById("idCard");
     const opt = {
-        margin:       [0, 0.7, 0, 0.7], // top, left, bottom, right (in inches)
+        margin:       [0, 0.7, 0, 0.7],
         filename:     'ID_Card.pdf',
         image:        { type: 'jpeg', quality: 1 },
         html2canvas:  { scale: 2 },
