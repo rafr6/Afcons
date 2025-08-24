@@ -12,11 +12,6 @@
         background: #f2f2f2;
         font-family: Arial, sans-serif;
     }
-    .card-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
     .id-card {
         width: 2.1in;
         height: 3.37in;
@@ -27,6 +22,9 @@
         text-align: center;
         box-sizing: border-box;
         position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     .top-logos {
         display: flex;
@@ -83,10 +81,8 @@
         display: block;
         margin: 0 auto 2px;
     }
-    /* Footer banner outside the card */
+    /* Footer banner inside the card */
     .footer {
-        margin-top: 3px;
-        width: 2.1in;
         background: #0d356d;
         color: #fff;
         font-size: 7px;
@@ -94,51 +90,50 @@
         padding: 3px;
         text-align: center;
         border-radius: 0 0 12px 12px;
+        margin-top: auto;
     }
 </style>
 </head>
 <body>
-    <div class="card-wrapper">
-        <div class="id-card">
-            <!-- Top Logos (placeholders) -->
-            <div class="top-logos">
-                <img src="left-logo.png" alt="Left Logo">
-                <img src="right-logo.png" alt="Right Logo">
-            </div>
-            
-            <!-- Profile Photo -->
-            <div class="profile-pic">
-                <img src="profile-photo.png" alt="Profile Photo">
-            </div>
+    <div class="id-card">
+        <!-- Top Logos (placeholders) -->
+        <div class="top-logos">
+            <img src="left-logo.png" alt="Left Logo">
+            <img src="right-logo.png" alt="Right Logo">
+        </div>
+        
+        <!-- Profile Photo -->
+        <div class="profile-pic">
+            <img src="profile-photo.png" alt="Profile Photo">
+        </div>
 
-            <!-- Employee Code and Name -->
-            <div class="emp-code">Emp Code: 257370</div>
-            <div class="emp-name">MD Rahim Mia</div>
+        <!-- Employee Code and Name -->
+        <div class="emp-code">Emp Code: 257370</div>
+        <div class="emp-name">MD Rahim Mia</div>
 
-            <!-- Employee Info -->
-            <div class="emp-info">
-                <p><strong>Job Title:</strong> Excavator Operator</p>
-                <p><strong>Blood Group:</strong> AB+</p>
-                <p><strong>Phone:</strong> +880 01747-902058</p>
-                <p><strong>Address:</strong> Jatrapur, Ashuganj, Ashuganj-3402,<br>Brahmanbaria, Chattogram</p>
-                <p><strong>Join:</strong> 01-01-2023</p>
-                <p><strong>Expiry:</strong> 01-01-2023</p>
+        <!-- Employee Info -->
+        <div class="emp-info">
+            <p><strong>Job Title:</strong> Excavator Operator</p>
+            <p><strong>Blood Group:</strong> AB+</p>
+            <p><strong>Phone:</strong> +880 01747-902058</p>
+            <p><strong>Address:</strong> Jatrapur, Ashuganj, Ashuganj-3402,<br>Brahmanbaria, Chattogram</p>
+            <p><strong>Join:</strong> 01-01-2023</p>
+            <p><strong>Expiry:</strong> 01-01-2023</p>
+        </div>
+
+        <!-- Signatures -->
+        <div class="signatures">
+            <div>
+                <img src="signature-holder.png" alt="Signature Holder">
+                Signature of Holder
             </div>
-
-            <!-- Signatures -->
-            <div class="signatures">
-                <div>
-                    <img src="signature-holder.png" alt="Signature Holder">
-                    Signature of Holder
-                </div>
-                <div>
-                    <img src="signature-director.png" alt="Signature Director">
-                    Managing Director
-                </div>
+            <div>
+                <img src="signature-director.png" alt="Signature Director">
+                Managing Director
             </div>
         </div>
 
-        <!-- Footer Banner -->
+        <!-- Footer Banner (inside card) -->
         <div class="footer">AFCONS INFRASTRUCTURE LIMITED</div>
     </div>
 </body>
