@@ -18,14 +18,32 @@
         background: #fff;
         border-radius: 12px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        padding: 6px;
-        text-align: center;
         box-sizing: border-box;
         position: relative;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        overflow: hidden; /* হেডার আর ফুটার ঠিক রাখতে */
     }
+
+    /* Top Header Bar */
+    .header-bar {
+        background: #0d356d;
+        color: #fff;
+        font-size: 7px;
+        font-weight: bold;
+        text-align: center;
+        padding: 2px 0;
+    }
+
+    .card-content {
+        flex: 1;
+        padding: 6px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
     .top-logos {
         display: flex;
         justify-content: space-between;
@@ -61,6 +79,7 @@
         text-align: left;
         line-height: 1.2;
         padding: 0 4px;
+        flex-grow: 1; /* নিচে ব্যানার পুশ করতে সাহায্য করবে */
     }
     .emp-info p {
         margin: 1px 0;
@@ -90,50 +109,55 @@
         padding: 3px;
         text-align: center;
         border-radius: 0 0 12px 12px;
-        margin-top: auto;
     }
 </style>
 </head>
 <body>
     <div class="id-card">
-        <!-- Top Logos (placeholders) -->
-        <div class="top-logos">
-            <img src="left-logo.png" alt="Left Logo">
-            <img src="right-logo.png" alt="Right Logo">
-        </div>
-        
-        <!-- Profile Photo -->
-        <div class="profile-pic">
-            <img src="profile-photo.png" alt="Profile Photo">
-        </div>
+        <!-- Top Header -->
+        <div class="header-bar">EMPLOYEE ID CARD</div>
 
-        <!-- Employee Code and Name -->
-        <div class="emp-code">Emp Code: 257370</div>
-        <div class="emp-name">MD Rahim Mia</div>
-
-        <!-- Employee Info -->
-        <div class="emp-info">
-            <p><strong>Job Title:</strong> Excavator Operator</p>
-            <p><strong>Blood Group:</strong> AB+</p>
-            <p><strong>Phone:</strong> +880 01747-902058</p>
-            <p><strong>Address:</strong> Jatrapur, Ashuganj, Ashuganj-3402,<br>Brahmanbaria, Chattogram</p>
-            <p><strong>Join:</strong> 01-01-2023</p>
-            <p><strong>Expiry:</strong> 01-01-2023</p>
-        </div>
-
-        <!-- Signatures -->
-        <div class="signatures">
-            <div>
-                <img src="signature-holder.png" alt="Signature Holder">
-                Signature of Holder
+        <!-- Card Content -->
+        <div class="card-content">
+            <!-- Top Logos -->
+            <div class="top-logos">
+                <img src="left-logo.png" alt="Left Logo">
+                <img src="right-logo.png" alt="Right Logo">
             </div>
-            <div>
-                <img src="signature-director.png" alt="Signature Director">
-                Managing Director
+            
+            <!-- Profile Photo -->
+            <div class="profile-pic">
+                <img src="profile-photo.png" alt="Profile Photo">
+            </div>
+
+            <!-- Employee Code and Name -->
+            <div class="emp-code">Emp Code: 257370</div>
+            <div class="emp-name">MD Rahim Mia</div>
+
+            <!-- Employee Info -->
+            <div class="emp-info">
+                <p><strong>Job Title:</strong> Excavator Operator</p>
+                <p><strong>Blood Group:</strong> AB+</p>
+                <p><strong>Phone:</strong> +880 01747-902058</p>
+                <p><strong>Address:</strong> Jatrapur, Ashuganj, Ashuganj-3402,<br>Brahmanbaria, Chattogram</p>
+                <p><strong>Join:</strong> 01-01-2023</p>
+                <p><strong>Expiry:</strong> 01-01-2023</p>
+            </div>
+
+            <!-- Signatures -->
+            <div class="signatures">
+                <div>
+                    <img src="signature-holder.png" alt="Signature Holder">
+                    Signature of Holder
+                </div>
+                <div>
+                    <img src="signature-director.png" alt="Signature Director">
+                    Managing Director
+                </div>
             </div>
         </div>
 
-        <!-- Footer Banner (inside card) -->
+        <!-- Footer Banner -->
         <div class="footer">AFCONS INFRASTRUCTURE LIMITED</div>
     </div>
 </body>
