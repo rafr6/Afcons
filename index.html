@@ -101,13 +101,18 @@
     .signatures div {
         text-align: center;
         width: 45%;
-        border-top: 1px solid #000; /* চিকন বর্ডার */
         padding-top: 2px;
+        border-top: 1px solid #333; /* চিকন বর্ডার আরও হালকা */
+        position: relative;
     }
     .signatures img.signature-pic {
         display: block;
         height: 18px;
         margin: 0 auto 2px;
+        position: absolute;
+        top: -20px; /* বর্ডারের উপরে ছবি */
+        left: 50%;
+        transform: translateX(-50%);
     }
     .footer {
         background: #0d356d;
