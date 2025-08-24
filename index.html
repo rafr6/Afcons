@@ -20,7 +20,6 @@
         border-radius: 12px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         box-sizing: border-box;
-        position: relative;
         display: flex;
         flex-direction: column;
         overflow: hidden;
@@ -41,7 +40,6 @@
         text-align: center;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
     }
     .top-logos {
         display: flex;
@@ -77,18 +75,22 @@
     }
     .emp-info p {
         margin: 1px 0;
-        font-weight: normal; /* label চিকন */
+        font-weight: normal;
     }
     .emp-info p strong {
-        font-weight: normal; /* label চিকন */
+        font-weight: normal;
         color: #000;
     }
     .emp-info p span {
-        font-weight: bold; /* value মোটা */
+        font-weight: bold;
         color: inherit;
     }
     .emp-info p.job-title span {
-        color: orange; /* Excavator Operator কমলা */
+        color: orange;
+    }
+    /* ঠিক Address লেভেল */
+    .emp-info p.address span {
+        display: block;
     }
     .signatures {
         display: flex;
@@ -99,8 +101,13 @@
     .signatures div {
         text-align: center;
         width: 45%;
-        border-top: 1px solid #000; /* চিকন বর্ডার */
+        border-top: 1px solid #000;
         padding-top: 2px;
+    }
+    .signatures img {
+        display: block;
+        height: 14px;
+        margin: 0 auto 2px;
     }
     .footer {
         background: #0d356d;
@@ -144,14 +151,23 @@
                 <p class="job-title"><strong>Job Title:</strong> <span>Excavator Operator</span></p>
                 <p><strong>Blood Group:</strong> <span>AB+</span></p>
                 <p><strong>Phone:</strong> <span>+880 01747-902058</span></p>
-                <p><strong>Address:</strong> <span>Jatrapur, Ashuganj, Ashuganj-3402,<br>Brahmanbaria, Chattogram</span></p>
+                <p class="address"><strong>Address:</strong> 
+                    <span>Jatrapur, Ashuganj, Ashuganj-3402,</span>
+                    <span>Brahmanbaria, Chattogram</span>
+                </p>
                 <p><strong>Join:</strong> <span>01-01-2023</span></p>
                 <p><strong>Expiry:</strong> <span>01-01-2023</span></p>
             </div>
 
             <div class="signatures">
-                <div>Signature of Holder</div>
-                <div>Managing Director</div>
+                <div>
+                    <img src="signature-holder.png" alt="Signature Holder">
+                    Signature of Holder
+                </div>
+                <div>
+                    <img src="signature-director.png" alt="Signature Director">
+                    Managing Director
+                </div>
             </div>
         </div>
 
@@ -165,20 +181,14 @@
 document.getElementById("downloadBtn").addEventListener("click", () => {
     const element = document.getElementById("idCard");
     const opt = {
-        margin:       [0.5, 0.5],
+        margin:       [0, 0.7, 0, 0.7], // top, left, bottom, right (in inches)
         filename:     'ID_Card.pdf',
         image:        { type: 'jpeg', quality: 1 },
         html2canvas:  { scale: 2 },
         jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
     };
     html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
-        // PDF download শেষে বাটন লুকানো
-        document.getElementById("downloadBtn").style.display = "none";
-        // কার্ডকে A4 পেইজে সেন্টার করা
-        const totalPages = pdf.internal.getNumberOfPages();
-        for (let i = 1; i <= totalPages; i++) {
-            pdf.setPage(i);
-        }
+        document.getElementById("downloadBtn").style.display = "none"; // বাটন লুকানো
     }).save();
 });
 </script>
