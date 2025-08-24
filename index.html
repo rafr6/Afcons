@@ -185,23 +185,13 @@
 document.getElementById("downloadBtn").addEventListener("click", () => {
     const element = document.getElementById("idCard");
     const opt = {
-        margin:       [0, 0, 0, 0], // A4 মার্জিন জন্য শূন্য, কার্ডকে সেন্টার করতে jsPDF ব্যবহার
+        margin:       0.5, // A4 পেজে মার্জিন
         filename:     'ID_Card.pdf',
         image:        { type: 'jpeg', quality: 1 },
         html2canvas:  { scale: 2, useCORS: true },
         jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
     };
-
-    html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
-        const pageWidth = pdf.internal.pageSize.getWidth();
-        const pageHeight = pdf.internal.pageSize.getHeight();
-        const cardWidth = 2.1; // inch
-        const cardHeight = 3.37; // inch
-        const x = (pageWidth - cardWidth) / 2;
-        const y = (pageHeight - cardHeight) / 2;
-        pdf.addImage(pdf.internal.getImageProperties(element).src, 'JPEG', x, y, cardWidth, cardHeight);
-        document.getElementById("downloadBtn").style.display = "none";
-    }).save();
+    html2pdf().set(opt).from(element).save();
 });
 </script>
 
