@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ID Card</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #f2f2f2;
+        font-family: Arial, sans-serif;
+    }
+    .id-card {
+        width: 2.1in;
+        height: 3.37in;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        padding: 10px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    .top-logos {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 5px;
+    }
+    .top-logos img {
+        height: 25px;
+    }
+    .profile-pic {
+        margin: 8px 0;
+    }
+    .profile-pic img {
+        width: 70px;
+        height: 70px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        object-fit: cover;
+    }
+    .emp-info {
+        font-size: 8.5px;
+        text-align: left;
+        margin-top: 5px;
+        line-height: 1.3;
+        padding: 0 5px;
+    }
+    .emp-info strong {
+        font-weight: bold;
+    }
+    .emp-code {
+        font-size: 9px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 4px;
+    }
+    .emp-name {
+        font-size: 9px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .signatures {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 6px 5px;
+        font-size: 6px;
+    }
+    .signatures div {
+        text-align: center;
+    }
+    .signatures img {
+        height: 15px;
+        display: block;
+        margin: 0 auto 2px;
+    }
+    .footer {
+        background: #0d356d;
+        color: #fff;
+        font-size: 7px;
+        font-weight: bold;
+        padding: 3px;
+        border-radius: 0 0 12px 12px;
+    }
+</style>
+</head>
+<body>
+    <div class="id-card">
+        <!-- Top Logos -->
+        <div class="top-logos">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Shapoorji_Pallonji_Logo.png" alt="Logo Left">
+            <img src="https://www.afcons.com/themes/custom/afcons/logo.png" alt="Logo Right">
+        </div>
+        
+        <!-- Profile -->
+        <div class="profile-pic">
+            <img src="https://i.ibb.co/pjqPz5t/skull.png" alt="Profile Photo">
+        </div>
+
+        <!-- Employee Code and Name -->
+        <div class="emp-code">Emp Code: 257370</div>
+        <div class="emp-name">MD Rahim Mia</div>
+
+        <!-- Employee Info -->
+        <div class="emp-info">
+            <p><strong>Job Title:</strong> Excavator Operator</p>
+            <p><strong>Blood Group:</strong> AB+</p>
+            <p><strong>Phone:</strong> +880 01747-902058</p>
+            <p><strong>Address:</strong><br>Jatrapur, Ashuganj, Ashuganj-3402<br>Brahmanbaria, Chattogram</p>
+            <p><strong>Join:</strong> 01-01-2023</p>
+            <p><strong>Expiry:</strong> 01-01-2023</p>
+        </div>
+
+        <!-- Signatures -->
+        <div class="signatures">
+            <div>
+                <img src="https://i.ibb.co/vZPgmbs/signature.png" alt="Signature Holder">
+                Signature of Holder
+            </div>
+            <div>
+                <img src="https://i.ibb.co/x7Y0Xz1/stamp.png" alt="Signature Director">
+                Managing Director
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">AFCONS INFRASTRUCTURE LIMITED</div>
+    </div>
+</body>
+</html>
