@@ -25,7 +25,6 @@
         overflow: hidden;
         border-left: 1px solid #999;
         border-right: 1px solid #999;
-        margin: 0 auto;
     }
     .header-bar {
         background: #0d356d;
@@ -101,15 +100,16 @@
     .signatures div {
         text-align: center;
         width: 45%;
-        padding-top: 25px; /* signature image এর জায়গা */
-        border-top: 1px solid #333; /* চিকন বর্ডার */
+        padding-top: 2px;
+        border-top: 1px solid #333;
         position: relative;
     }
     .signatures img.signature-pic {
         display: block;
         height: 18px;
+        margin: 0 auto 2px;
         position: absolute;
-        top: -22px; /* বর্ডারের উপরে ছবি */
+        top: -20px; 
         left: 50%;
         transform: translateX(-50%);
     }
@@ -184,32 +184,23 @@
 <script>
 document.getElementById("downloadBtn").addEventListener("click", () => {
     const element = document.getElementById("idCard");
-
     const opt = {
-        margin:       [1, 1, 1, 1], // inch (top, left, bottom, right)
+        margin:       [0, 0, 0, 0], // A4 মার্জিন জন্য শূন্য, কার্ডকে সেন্টার করতে jsPDF ব্যবহার
         filename:     'ID_Card.pdf',
         image:        { type: 'jpeg', quality: 1 },
-        html2canvas:  { scale: 2 },
+        html2canvas:  { scale: 2, useCORS: true },
         jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
     };
 
-    html2pdf().set(opt).from(element).toPdf().get('pdf').then(function(pdf){
-        document.getElementById("downloadBtn").style.display = "none";
+    html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
         const pageWidth = pdf.internal.pageSize.getWidth();
         const pageHeight = pdf.internal.pageSize.getHeight();
-        const cardWidth = element.offsetWidth / 96; // px to inch (assuming 96dpi)
-        const cardHeight = element.offsetHeight / 96;
+        const cardWidth = 2.1; // inch
+        const cardHeight = 3.37; // inch
         const x = (pageWidth - cardWidth) / 2;
         const y = (pageHeight - cardHeight) / 2;
-        pdf.setPage(1);
-        pdf.addImage(
-            pdf.internal.getImageProperties(element),
-            'JPEG',
-            x,
-            y,
-            cardWidth,
-            cardHeight
-        );
+        pdf.addImage(pdf.internal.getImageProperties(element).src, 'JPEG', x, y, cardWidth, cardHeight);
+        document.getElementById("downloadBtn").style.display = "none";
     }).save();
 });
 </script>
