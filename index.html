@@ -13,20 +13,36 @@
         background: #f2f2f2;
         font-family: Arial, sans-serif;
     }
-    .id-card {
+    .id-card-wrapper {
+        position: relative;
         width: 54mm;
         height: 85.6mm;
+        margin: 0 auto;
+    }
+    .id-card {
+        width: 100%;
+        height: 100%;
         background: #fff;
         border-radius: 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        border-left: 1px solid #999;
-        /* ডান পাশের বর্ডার PDF এ ঠিক দেখানোর জন্য box-shadow ব্যবহার */
-        box-shadow: inset -1px 0 0 0 #999;
-        margin: 0 auto;
+        position: relative;
     }
+    /* Left & Right border overlay to ensure PDF shows correctly */
+    .id-card::before, .id-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background: #999;
+    }
+    .id-card::before { left: 0; } /* Left border */
+    .id-card::after { right: 0; } /* Right border */
+    
     .header-bar {
         background: #0d356d;
         color: #fff;
@@ -48,13 +64,8 @@
         align-items: center;
         margin-bottom: 4px;
     }
-    .top-logos img {
-        height: 30px;
-        width: auto;
-    }
-    .profile-pic {
-        margin: 4px 0;
-    }
+    .top-logos img { height: 30px; width: auto; }
+    .profile-pic { margin: 4px 0; }
     .profile-pic img {
         width: 65px;
         height: 75px;
@@ -74,24 +85,11 @@
         padding: 0 4px;
         flex-grow: 1;
     }
-    .emp-info p {
-        margin: 1px 0;
-        font-weight: normal;
-    }
-    .emp-info p strong {
-        font-weight: normal;
-        color: #000;
-    }
-    .emp-info p span {
-        font-weight: bold;
-        color: inherit;
-    }
-    .emp-info p.job-title span {
-        color: orange;
-    }
-    .emp-info p.address span {
-        display: block;
-    }
+    .emp-info p { margin: 1px 0; font-weight: normal; }
+    .emp-info p strong { font-weight: normal; color: #000; }
+    .emp-info p span { font-weight: bold; color: inherit; }
+    .emp-info p.job-title span { color: orange; }
+    .emp-info p.address span { display: block; }
     .signatures {
         display: flex;
         justify-content: space-between;
@@ -138,45 +136,47 @@
 <body>
 
 <div>
-    <div class="id-card" id="idCard">
-        <div class="header-bar">EMPLOYEE ID CARD</div>
+    <div class="id-card-wrapper">
+        <div class="id-card" id="idCard">
+            <div class="header-bar">EMPLOYEE ID CARD</div>
 
-        <div class="card-content">
-            <div class="top-logos">
-                <img src="left-logo.png" alt="Left Logo">
-                <img src="right-logo.png" alt="Right Logo">
-            </div>
-            <div class="profile-pic">
-                <img src="profile-photo.png" alt="Profile Photo">
-            </div>
-            <div class="emp-code">Emp Code: 256570</div>
-            <div class="emp-name">MD Rahim Mia</div>
-
-            <div class="emp-info">
-                <p class="job-title"><strong>Job Title:</strong> <span>Excavator Operator</span></p>
-                <p><strong>Blood Group:</strong> <span>B(+)VE</span></p>
-                <p><strong>Phone:</strong> <span>+880 01747-902058</span></p>
-                <p class="address"><strong>Address:</strong> 
-                    <span>Jatrapur, Ashuganj, Ashuganj-3402,</span>
-                    <span>Brahmanbaria, Chattogram</span>
-                </p>
-                <p><strong>Join:</strong> <span>11-03-2024</span></p>
-                <p><strong>Expiry:</strong> <span>10-03-2025</span></p>
-            </div>
-
-            <div class="signatures">
-                <div>
-                    <img class="signature-pic" src="signature-holder.png" alt="Signature Holder">
-                    Signature of Holder
+            <div class="card-content">
+                <div class="top-logos">
+                    <img src="left-logo.png" alt="Left Logo">
+                    <img src="right-logo.png" alt="Right Logo">
                 </div>
-                <div>
-                    <img class="signature-pic" src="signature-director.png" alt="Signature Director">
-                    Managing Director
+                <div class="profile-pic">
+                    <img src="profile-photo.png" alt="Profile Photo">
+                </div>
+                <div class="emp-code">Emp Code: 256570</div>
+                <div class="emp-name">MD Rahim Mia</div>
+
+                <div class="emp-info">
+                    <p class="job-title"><strong>Job Title:</strong> <span>Excavator Operator</span></p>
+                    <p><strong>Blood Group:</strong> <span>B(+)VE</span></p>
+                    <p><strong>Phone:</strong> <span>+880 01747-902058</span></p>
+                    <p class="address"><strong>Address:</strong> 
+                        <span>Jatrapur, Ashuganj, Ashuganj-3402,</span>
+                        <span>Brahmanbaria, Chattogram</span>
+                    </p>
+                    <p><strong>Join:</strong> <span>11-03-2024</span></p>
+                    <p><strong>Expiry:</strong> <span>10-03-2025</span></p>
+                </div>
+
+                <div class="signatures">
+                    <div>
+                        <img class="signature-pic" src="signature-holder.png" alt="Signature Holder">
+                        Signature of Holder
+                    </div>
+                    <div>
+                        <img class="signature-pic" src="signature-director.png" alt="Signature Director">
+                        Managing Director
+                    </div>
                 </div>
             </div>
+
+            <div class="footer">AFCONS INFRASTRUCTURE LIMITED</div>
         </div>
-
-        <div class="footer">AFCONS INFRASTRUCTURE LIMITED</div>
     </div>
 
     <button class="download-btn" id="downloadBtn">Download PDF</button>
