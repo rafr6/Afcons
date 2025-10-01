@@ -14,8 +14,8 @@
         font-family: Arial, sans-serif;
     }
     .id-card {
-        width: 2.1in;
-        height: 3.37in;
+        width: 54mm;
+        height: 85.6mm;
         background: #fff;
         border-radius: 0;
         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -186,10 +186,10 @@
 document.getElementById("downloadBtn").addEventListener("click", () => {
     const element = document.getElementById("idCard");
     const opt = {
-        margin:       [ (11.69 - 3.37)/2, (8.27 - 2.1)/2 ], // সেন্টার A4
+        margin:       [ (11.69 - 3.37)/2, (8.27 - 2.1)/2 ], // A4 এর মাঝে সেন্টার করার জন্য
         filename:     'ID_Card.pdf',
         image:        { type: 'jpeg', quality: 1 },
-        html2canvas:  { scale: 4, useCORS: true }, // HD quality
+        html2canvas:  { scale: 4, useCORS: true },
         jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
     };
     html2pdf().set(opt).from(element).save();
