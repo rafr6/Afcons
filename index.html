@@ -8,7 +8,7 @@
     body {
         display: flex;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center; /* পেজে সেন্টার করা */
         height: 100vh;
         background: #f2f2f2;
         font-family: Arial, sans-serif;
@@ -23,8 +23,8 @@
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        border-left: 1mm solid #999;
-        border-right: 1mm solid #999;
+        border-left: 0.5mm solid #999; /* চিকন বর্ডার */
+        border-right: 0.5mm solid #999; /* চিকন বর্ডার */
         margin: 0 auto;
     }
     .header-bar {
@@ -186,10 +186,10 @@
 document.getElementById("downloadBtn").addEventListener("click", () => {
     const element = document.getElementById("idCard");
     const opt = {
-        margin:       [0.2,0.2,0.2,0.2], // PDF margin
+        margin:       [0,0,0,0], // PDF margin 0 to center card
         filename:     'ID_Card.pdf',
         image:        { type: 'jpeg', quality: 1 },
-        html2canvas:  { scale: 4, useCORS: true },
+        html2canvas:  { scale: 6, useCORS: true }, // HD scale
         jsPDF:        { unit: 'mm', format: [54,85.6], orientation: 'portrait' }
     };
     html2pdf().set(opt).from(element).save();
