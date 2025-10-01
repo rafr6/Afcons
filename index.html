@@ -24,7 +24,7 @@
         flex-direction: column;
         overflow: hidden;
         border-left: 1px solid #999;
-        border-right: 1px solid #999;
+        border-right: 1px solid #999; /* ডান পাশের বর্ডার */
         margin: 0 auto;
     }
     .header-bar {
@@ -186,7 +186,7 @@
 document.getElementById("downloadBtn").addEventListener("click", () => {
     const element = document.getElementById("idCard");
     const opt = {
-        margin:       [ (11.69 - 3.37)/2, (8.27 - 2.1)/2 ], // A4 এর মাঝে সেন্টার করার জন্য
+        margin:       [ (11.69 - 3.37)/2, (8.27 - 2.1)/2 ],
         filename:     'ID_Card.pdf',
         image:        { type: 'jpeg', quality: 1 },
         html2canvas:  { scale: 4, useCORS: true },
