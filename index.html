@@ -185,12 +185,23 @@
 <script>
 document.getElementById("downloadBtn").addEventListener("click", () => {
     const element = document.getElementById("idCard");
+
+    // A4 dimensions in mm
+    const pageWidth = 210;
+    const pageHeight = 297;
+    const cardWidth = 54;
+    const cardHeight = 85.6;
+
+    // Center offsets
+    const marginLeft = (pageWidth - cardWidth) / 2;
+    const marginTop = (pageHeight - cardHeight) / 2;
+
     const opt = {
-        margin:       [0,0], // পেজের সেন্টার করার জন্য
-        filename:     'ID_Card.pdf',
-        image:        { type: 'jpeg', quality: 1 },
-        html2canvas:  { scale: 6, useCORS: true }, // HD quality
-        jsPDF:        { unit: 'mm', format: [54,85.6], orientation: 'portrait' }
+        margin: [marginTop, marginLeft, 0, 0], // top, left, bottom, right
+        filename: 'ID_Card.pdf',
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: { scale: 6, useCORS: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
     html2pdf().set(opt).from(element).save();
 });
