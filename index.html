@@ -192,17 +192,18 @@ document.getElementById("downloadBtn").addEventListener("click", () => {
     const cardWidth = 54;
     const cardHeight = 85.6;
 
-    // Center offsets
+    // সেন্টার করার জন্য left এবং top offset
     const marginLeft = (pageWidth - cardWidth) / 2;
     const marginTop = (pageHeight - cardHeight) / 2;
 
     const opt = {
-        margin: [marginTop, marginLeft, 0, 0], // top, left, bottom, right
+        margin: [marginTop, marginLeft, marginTop, marginLeft], // [top, left, bottom, right]
         filename: 'ID_Card.pdf',
         image: { type: 'jpeg', quality: 1 },
         html2canvas: { scale: 6, useCORS: true },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
+
     html2pdf().set(opt).from(element).save();
 });
 </script>
